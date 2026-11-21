@@ -1,0 +1,32 @@
+cff-version: 1.2.0
+message: "If you use UNMASK, please cite the paper below."
+title: "UNMASK: A Lightweight Deepfake Detection Framework through Dual Foundation Prior Integration and Routed Multi-Teacher Knowledge Distillation for Cross-Domain Generalization"
+type: software
+license: MIT
+version: 1.0.0
+keywords:
+  - deepfake detection
+  - face forgery detection
+  - knowledge distillation
+  - foundation models
+  - cross-domain generalization
+authors:
+  - family-names: Rahmatulloh
+    given-names: Alam
+  - family-names: Darmawan
+    given-names: Irfan
+  - family-names: Ambarsari
+    given-names: Nia
+preferred-citation:
+  type: unpublished
+  title: "UNMASK: A Lightweight Deepfake Detection Framework through Dual Foundation Prior Integration and Routed Multi-Teacher Knowledge Distillation for Cross-Domain Generalization"
+  authors:
+    - family-names: Rahmatulloh
+      given-names: Alam
+    - family-names: Darmawan
+      given-names: Irfan
+    - family-names: Ambarsari
+      given-names: Nia
+  notes: "Manuscript under review"
+  status: submitted
+  year: 2026

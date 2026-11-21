@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 872" width="760" height="872" font-family="Helvetica, Arial, sans-serif" font-size="13" role="img" aria-label="UNMASK-Base architecture" xmlns:c2pa="http://c2pa.org/manifest">
+<rect width="760" height="872" fill="#ffffff"/>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#8c959f"/></marker></defs>
+<text x="24" y="28" fill="#1f2328" text-anchor="start" font-size="15" font-weight="600">UNMASK-Base: two frozen priors, read at four depths, fused by multi-level SE</text>
+<text x="24" y="48" fill="#57606a" text-anchor="start" font-size="11.5">45.8 M parameters at inference · 8.66 GMACs per 224 px frame · teachers are used in training only</text>
+<g fill="none" stroke="#8c959f" stroke-width="1.25">
+<path d="M380 120V134H194V150" marker-end="url(#arrow)"/>
+<path d="M380 134H566V150" marker-end="url(#arrow)"/>
+<path d="M107 260V276" marker-end="url(#arrow)"/>
+<path d="M107 332V348" marker-end="url(#arrow)"/>
+<path d="M107 404V420" marker-end="url(#arrow)"/>
+<path d="M479 260V276" marker-end="url(#arrow)"/>
+<path d="M479 332V348" marker-end="url(#arrow)"/>
+<path d="M479 404V420" marker-end="url(#arrow)"/>
+<path d="M182 304H206" marker-end="url(#arrow)"/>
+<path d="M182 376H206" marker-end="url(#arrow)"/>
+<path d="M182 448H206" marker-end="url(#arrow)"/>
+<path d="M554 304H578" marker-end="url(#arrow)"/>
+<path d="M554 376H578" marker-end="url(#arrow)"/>
+<path d="M554 448H578" marker-end="url(#arrow)"/>
+<path d="M107 476V520H206" marker-end="url(#arrow)"/>
+<path d="M479 476V520H578" marker-end="url(#arrow)"/>
+<path d="M281 564V604" marker-end="url(#arrow)"/>
+<path d="M281 584H101V604" marker-end="url(#arrow)"/>
+<path d="M653 564V604" marker-end="url(#arrow)"/>
+<path d="M653 584H480V604" marker-end="url(#arrow)"/>
+<path d="M380 660V684" marker-end="url(#arrow)"/>
+<path d="M380 740V764" marker-end="url(#arrow)"/>
+</g>
+<rect x="250" y="64" width="260" height="56" rx="8" fill="#ffffff" stroke="#8c959f" stroke-width="1.25"/>
+<text x="380.0" y="88" fill="#1f2328" text-anchor="middle" font-weight="600">Face crop</text>
+<text x="380.0" y="104" fill="#57606a" text-anchor="middle" font-size="11.5">3 × 224 × 224, ImageNet normalisation</text>
+<rect x="16" y="150" width="356" height="414" rx="8" fill="none" stroke="#8c959f" stroke-width="1" stroke-dasharray="4 4"/>
+<text x="194" y="172" fill="#1f2328" text-anchor="middle" font-weight="600">Face branch · FS-VFM ViT-S/16</text>
+<text x="194" y="188" fill="#57606a" text-anchor="middle" font-size="11.5">self-supervised on VGGFace2 faces, d = 384</text>
+<rect x="388" y="150" width="356" height="414" rx="8" fill="none" stroke="#8c959f" stroke-width="1" stroke-dasharray="4 4"/>
+<text x="566" y="172" fill="#1f2328" text-anchor="middle" font-weight="600">CLIP branch · PE-Core S/16</text>
+<text x="566" y="188" fill="#57606a" text-anchor="middle" font-size="11.5">contrastive image–text prior, d = 384</text>
+<rect x="32" y="204" width="150" height="56" rx="8" fill="#2f6fde" fill-opacity="0.12" stroke="#2f6fde" stroke-width="1.25"/>
+<text x="107.0" y="228" fill="#1f2328" text-anchor="middle" font-weight="600">Patch embedding</text>
+<text x="107.0" y="244" fill="#57606a" text-anchor="middle" font-size="11.5">16 × 16 → 197 tokens</text>
+<rect x="32" y="276" width="150" height="56" rx="8" fill="#2f6fde" fill-opacity="0.12" stroke="#2f6fde" stroke-width="1.25"/>
+<text x="107.0" y="300" fill="#1f2328" text-anchor="middle" font-weight="600">ViT blocks 1–4</text>
+<text x="107.0" y="316" fill="#57606a" text-anchor="middle" font-size="11.5">frozen + LoRA</text>
+<rect x="206" y="276" width="150" height="56" rx="8" fill="#ffffff" stroke="#8c959f" stroke-width="1.25"/>
+<text x="281.0" y="300" fill="#1f2328" text-anchor="middle" font-weight="600">Tap after block 4</text>
+<text x="281.0" y="316" fill="#57606a" text-anchor="middle" font-size="11.5">LN + gated pool → v1</text>
+<rect x="32" y="348" width="150" height="56" rx="8" fill="#2f6fde" fill-opacity="0.12" stroke="#2f6fde" stroke-width="1.25"/>
+<text x="107.0" y="372" fill="#1f2328" text-anchor="middle" font-weight="600">ViT blocks 5–8</text>
+<text x="107.0" y="388" fill="#57606a" text-anchor="middle" font-size="11.5">frozen + LoRA</text>
+<rect x="206" y="348" width="150" height="56" rx="8" fill="#ffffff" stroke="#8c959f" stroke-width="1.25"/>
+<text x="281.0" y="372" fill="#1f2328" text-anchor="middle" font-weight="600">Tap after block 8</text>
+<text x="281.0" y="388" fill="#57606a" text-anchor="middle" font-size="11.5">LN + gated pool → v2</text>
+<rect x="32" y="420" width="150" height="56" rx="8" fill="#2f6fde" fill-opacity="0.12" stroke="#2f6fde" stroke-width="1.25"/>
+<text x="107.0" y="444" fill="#1f2328" text-anchor="middle" font-weight="600">ViT blocks 9–12</text>
+<text x="107.0" y="460" fill="#57606a" text-anchor="middle" font-size="11.5">frozen + LoRA</text>
+<rect x="206" y="420" width="150" height="56" rx="8" fill="#ffffff" stroke="#8c959f" stroke-width="1.25"/>
+<text x="281.0" y="444" fill="#1f2328" text-anchor="middle" font-weight="600">Tap after block 12</text>
+<text x="281.0" y="460" fill="#57606a" text-anchor="middle" font-size="11.5">LN + gated pool → v3</text>
+<rect x="206" y="492" width="150" height="56" rx="8" fill="#ffffff" stroke="#8c959f" stroke-width="1.25"/>
+<text x="281.0" y="516" fill="#1f2328" text-anchor="middle" font-weight="600">Summary → v4</text>
+<text x="281.0" y="532" fill="#57606a" text-anchor="middle" font-size="11.5">LN(mean of patch tokens)</text>
+<rect x="404" y="204" width="150" height="56" rx="8" fill="#2f6fde" fill-opacity="0.12" stroke="#2f6fde" stroke-width="1.25"/>
+<text x="479.0" y="228" fill="#1f2328" text-anchor="middle" font-weight="600">Patch embedding</text>
+<text x="479.0" y="244" fill="#57606a" text-anchor="middle" font-size="11.5">16 × 16 → 197 tokens</text>
+<rect x="404" y="276" width="150" height="56" rx="8" fill="#2f6fde" fill-opacity="0.12" stroke="#2f6fde" stroke-width="1.25"/>
+<text x="479.0" y="300" fill="#1f2328" text-anchor="middle" font-weight="600">ViT blocks 1–4</text>
+<text x="479.0" y="316" fill="#57606a" text-anchor="middle" font-size="11.5">frozen + LoRA</text>
+<rect x="578" y="276" width="150" height="56" rx="8" fill="#ffffff" stroke="#8c959f" stroke-width="1.25"/>
+<text x="653.0" y="300" fill="#1f2328" text-anchor="middle" font-weight="600">Tap after block 4</text>
+<text x="653.0" y="316" fill="#57606a" text-anchor="middle" font-size="11.5">LN + gated pool → v1</text>
+<rect x="404" y="348" width="150" height="56" rx="8" fill="#2f6fde" fill-opacity="0.12" stroke="#2f6fde" stroke-width="1.25"/>
+<text x="479.0" y="372" fill="#1f2328" text-anchor="middle" font-weight="600">ViT blocks 5–8</text>
+<text x="479.0" y="388" fill="#57606a" text-anchor="middle" font-size="11.5">frozen + LoRA</text>
+<rect x="578" y="348" width="150" height="56" rx="8" fill="#ffffff" stroke="#8c959f" stroke-width="1.25"/>
+<text x="653.0" y="372" fill="#1f2328" text-anchor="middle" font-weight="600">Tap after block 8</text>
+<text x="653.0" y="388" fill="#57606a" text-anchor="middle" font-size="11.5">LN + gated pool → v2</text>
+<rect x="404" y="420" width="150" height="56" rx="8" fill="#2f6fde" fill-opacity="0.12" stroke="#2f6fde" stroke-width="1.25"/>
+<text x="479.0" y="444" fill="#1f2328" text-anchor="middle" font-weight="600">ViT blocks 9–12</text>
+<text x="479.0" y="460" fill="#57606a" text-anchor="middle" font-size="11.5">frozen + LoRA</text>
+<rect x="578" y="420" width="150" height="56" rx="8" fill="#ffffff" stroke="#8c959f" stroke-width="1.25"/>
+<text x="653.0" y="444" fill="#1f2328" text-anchor="middle" font-weight="600">Tap after block 12</text>
+<text x="653.0" y="460" fill="#57606a" text-anchor="middle" font-size="11.5">LN + gated pool → v3</text>
+<rect x="578" y="492" width="150" height="56" rx="8" fill="#2f6fde" fill-opacity="0.12" stroke="#2f6fde" stroke-width="1.25"/>
+<text x="653.0" y="516" fill="#1f2328" text-anchor="middle" font-weight="600">Summary → v4</text>
+<text x="653.0" y="532" fill="#57606a" text-anchor="middle" font-size="11.5">PE attention pool</text>
+<rect x="16" y="604" width="170" height="56" rx="8" fill="#ffffff" stroke="#8c959f" stroke-width="1.25"/>
+<text x="101.0" y="628" fill="#1f2328" text-anchor="middle" font-weight="600">Head [face]</text>
+<text x="101.0" y="644" fill="#57606a" text-anchor="middle" font-size="11.5">auxiliary · LN → linear → 2</text>
+<rect x="206" y="604" width="348" height="56" rx="8" fill="#ffffff" stroke="#8c959f" stroke-width="1.25"/>
+<text x="380.0" y="628" fill="#1f2328" text-anchor="middle" font-weight="600">Multi-level SE fusion</text>
+<text x="380.0" y="644" fill="#57606a" text-anchor="middle" font-size="11.5">8 level vectors → 8 gates in (0, 2), per sample</text>
+<rect x="568" y="604" width="170" height="56" rx="8" fill="#ffffff" stroke="#8c959f" stroke-width="1.25"/>
+<text x="653.0" y="628" fill="#1f2328" text-anchor="middle" font-weight="600">Head [clip]</text>
+<text x="653.0" y="644" fill="#57606a" text-anchor="middle" font-size="11.5">auxiliary · LN → linear → 2</text>
+<rect x="230" y="684" width="300" height="56" rx="8" fill="#ffffff" stroke="#8c959f" stroke-width="1.25"/>
+<text x="380.0" y="708" fill="#1f2328" text-anchor="middle" font-weight="600">Fused head</text>
+<text x="380.0" y="724" fill="#57606a" text-anchor="middle" font-size="11.5">concat 3072 → LN → linear → p(fake)</text>
+<rect x="255" y="764" width="250" height="56" rx="8" fill="#ffffff" stroke="#8c959f" stroke-width="1.25"/>
+<text x="380.0" y="788" fill="#1f2328" text-anchor="middle" font-weight="600">Video score</text>
+<text x="380.0" y="804" fill="#57606a" text-anchor="middle" font-size="11.5">mean p(fake) over the frames</text>
+<text x="24" y="842" fill="#57606a" text-anchor="start" font-size="11.5">Shaded: frozen pretrained weights (the ViT blocks carry trainable LoRA) · outlined: new trainable modules.</text>
+<text x="24" y="860" fill="#57606a" text-anchor="start" font-size="11.5">UNMASK-Mid replaces PE-Core S/16 by PE-Core T/16 (d = 192); UNMASK-Lite keeps the face branch only.</text>
+<metadata><c2pa:manifest>AAAWgmp1bWIAAAAeanVtZGMycGEAEQAQgAAAqgA4m3EDYzJwYQAAABZcanVtYgAAAEdqdW1kYzJtYQARABCAAACqADibcQN1cm46YzJwYTo3NDkxYTI1Mi1kOTc4LTRlZTItYmNkNy01MTQ4OTQ2MGJlMTcAAAADl2p1bWIAAAApanVtZGMyYXMAEQAQgAAAqgA4m3EDYzJwYS5hc3NlcnRpb25zAAAAALxqdW1iAAAARGp1bWRjYm9yABEAEIAAAKoAOJtxE2MycGEuaW5ncmVkaWVudC52MwAAAAAYYzJzaCwQWq2TpgVWxkAtM7aeuS0AAABwY2JvcqNpZGM6Zm9ybWF0bWltYWdlL3N2Zyt4bWxqaW5zdGFuY2VJRHgseG1wOmlpZDo0ZTA5OWFmZi0xYzU2LTRhMjQtOTEzNS02MDNjYzFmNzk1ZmRscmVsYXRpb25zaGlwaHBhcmVudE9mAAAB4mp1bWIAAABBanVtZGNib3IAEQAQgAAAqgA4m3ETYzJwYS5hY3Rpb25zLnYyAAAAABhjMnNo+7eOrw64hstVdjS+ADxqSgAAAZljYm9yomdhY3Rpb25zgqJmYWN0aW9ua2MycGEub3BlbmVkanBhcmFtZXRlcnOha2luZ3JlZGllbnRzgaJjdXJseC1zZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmluZ3JlZGllbnQudjNkaGFzaFggJr9Kh9w8c+87geA3HZ41AW/EgXj5SHFi24QiqtPYoI+kZmFjdGlvbngdY29tLmFudGhyb3BpYy5jbGF1ZGUucHJvdmlkZWRqcGFyYW1ldGVyc6F4H2NvbS5hbnRocm9waWMub3JpZ2luLWNvbmZpZGVuY2VndW5rbm93bmtkZXNjcmlwdGlvbnhmQ2xhdWRlIHByb3ZpZGVkIHRoaXMgZmlsZSBhdCB0aGUgcmVxdWVzdCBvZiBhIHVzZXIgYW5kIG1heSBoYXZlIGNyZWF0ZWQgb3IgbW9kaWZpZWQgdGhlIGZpbGUgY29udGVudHMubXNvZnR3YXJlQWdlbnShZG5hbWVmQ2xhdWRlcmFsbEFjdGlvbnNJbmNsdWRlZPUAAADIanVtYgAAAEBqdW1kY2JvcgARABCAAACqADibcRNjMnBhLmhhc2guZGF0YQAAAAAYYzJzaOT56dSlw9WzNlfkIm8bYiQAAACAY2JvcqVjYWxnZnNoYTI1NmNwYWRMAAAAAAAAAAAAAAAAZGhhc2hYID4+WuxnUAD8ZZfWHRzqvA7VxbVjkVw1wTpZxDgPDK+KZG5hbWVuanVtYmYgbWFuaWZlc3RqZXhjbHVzaW9uc4GiZXN0YXJ0GSgPZmxlbmd0aBkeBAAAAj5qdW1iAAAAJ2p1bWRjMmNsABEAEIAAAKoAOJtxA2MycGEuY2xhaW0udjIAAAACD2Nib3KlY2FsZ2ZzaGEyNTZpc2lnbmF0dXJleE1zZWxmI2p1bWJmPS9jMnBhL3VybjpjMnBhOjc0OTFhMjUyLWQ5NzgtNGVlMi1iY2Q3LTUxNDg5NDYwYmUxNy9jMnBhLnNpZ25hdHVyZWppbnN0YW5jZUlEeCx4bXA6aWlkOjUyYjIxODhjLTU2NmMtNDUxYi05MGRlLTdiOWY5YTI0MmE2NnJjcmVhdGVkX2Fzc2VydGlvbnODomN1cmx4LXNlbGYjanVtYmY9YzJwYS5hc3NlcnRpb25zL2MycGEuaW5ncmVkaWVudC52M2RoYXNoWCAmv0qH3Dxz7zuB4DcdnjUBb8SBePlIcWLbhCKq09igj6JjdXJseCpzZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmFjdGlvbnMudjJkaGFzaFgguMLNU2VtkXg0EKoiumwgewNno5Km7u4mQVONuVxZC+yiY3VybHgpc2VsZiNqdW1iZj1jMnBhLmFzc2VydGlvbnMvYzJwYS5oYXNoLmRhdGFkaGFzaFggWCSnR7WoAWqnoZcskxuR/uK2wa8gqogqcnXJDM75LhN0Y2xhaW1fZ2VuZXJhdG9yX2luZm+jZG5hbWVvQW50aHJvcGljIEZpbGVzZ3ZlcnNpb25lMS4wLjBrc3BlY1ZlcnNpb25lMi40LjAAABA4anVtYgAAAChqdW1kYzJjcwARABCAAACqADibcQNjMnBhLnNpZ25hdHVyZQAAABAIY2JvctKEWQISogEmGCFZAgowggIGMIIBjaADAgECAhRA5aAK7sI50L64g/oGQgU9Z1UTADAKBggqhkjOPQQDAzBJMRcwFQYDVQQKEw5BbnRocm9waWMsIFBCQzEuMCwGA1UEAxMlQW50aHJvcGljIENvbnRlbnQgQ3JlZGVudGlhbHMgUm9vdCBDQTAeFw0yNjA4MDcxODQzNTZaFw0yODA4MDYxOTQzNTZaMEQxFzAVBgNVBAoTDkFudGhyb3BpYywgUEJDMSkwJwYDVQQDEyBBbnRocm9waWMgQ2xhdWRlIENvbnRlbnQgU2lnbmluZzBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABJh6CmvLUBgFFNU0vUKlOVtE6djd17L5SuwX0LemFisBM3dkd/3cyjxFA3Qo5S46fX0/ihY0VZ7mfb9KF703t5OjWDBWMA4GA1UdDwEB/wQEAwIHgDAVBgNVHSUEDjAMBgorBgEEAYPoXgIBMAwGA1UdEwEB/wQCMAAwHwYDVR0jBBgwFoAUzlHiBIFOZFsj+OPEz5o+nMHXXMIwCgYIKoZIzj0EAwMDZwAwZAIwMXMdFJ4BetLLVY7ORuE9noqbbAZOZn/aArXyTwFAZfKrPzxF2vPoJNf1+UCdg1XGAjBwX1zd9WGqYkqmL5SFqw1QySjr1zJfpJM9+1rdDwSPLMOPOjKuiXjoU/pUUeG9RwmhY3BhZFkNngAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPZYQGalzTvh+cFJ5bwBUv83Nn8Ed1n5jzvC1J3sA6epwOK+LWbHSCqHSWYAxE4AsBsvEeV1mhCXuh+0CzYmQM+onnY=</c2pa:manifest></metadata></svg>

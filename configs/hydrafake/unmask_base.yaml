@@ -1,0 +1,42 @@
+# UNMASK-Base trained on the HydraFake training split (paper, Table 4; protocol of
+# Tan et al., ICLR 2026). Same recipe as on FF++; only the data and the schedule change:
+# 10 epochs, each one full pass over HydraFake train, without real/fake pairing.
+#   python tools/train.py --config configs/hydrafake/unmask_base.yaml --output_dir runs/unmask_base_hydrafake
+variant: base
+
+train_path: data/HydraFake/train
+val_path: data/HydraFake/val
+holdout_manip: none
+val_subsample: 1.0
+no_pairing: true
+select_by: clean
+
+face_ckpt: pretrained/fsvfm_vit_small/FS-VFM_ViT-S_VF2_600e.pth
+face_mean_std: pretrained/fsvfm_vit_small/pretrain_ds_mean_std.txt
+
+# teachers: the FF++ teachers, never trained on HydraFake; used because their frame AUC on
+# HydraFake val is >= 75 (GenD 86.0, FS-VFM-L 86.6)
+teacher_fsvfm: pretrained/fsvfm_vit_large_ffpp_c23.pth
+gend_cache: pretrained/gend_cache_hydrafake_train.npz
+teacher_gate: 75
+
+epochs: 10
+batch_size: 32
+accum_iter: 2
+blr: 0.001
+lora_r: 16
+lora_alpha: 32
+lora_dropout: 0.05
+lora_targets: attn+mlp
+branch_drop: 0.2
+w_cls: 1.0
+w_branch: 0.5
+w_kd: 0.5
+kd_temperature: 3.0
+w_sfd: 1.0
+w_dfd: 0.5
+label_smoothing: 0.1
+mix_prob: 0.5
+init_seed: 0
+seed: 0
+workers: 6

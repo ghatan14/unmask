@@ -1,0 +1,30 @@
+# data, weights and outputs (anchored to the repository root: unmask/data/ is code)
+/data/
+/pretrained/
+/checkpoints/
+/runs/
+/results/
+/third_party/
+/wdf_hf_cache/
+*.pth
+*.pt
+*.npz
+*.ckpt
+*.safetensors
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.pytest_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+
+# editors / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

@@ -1,0 +1,44 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "unmask"
+version = "1.0.0"
+description = "UNMASK: lightweight deepfake detection with dual foundation priors and routed multi-teacher distillation"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [
+    { name = "Alam Rahmatulloh" },
+    { name = "Irfan Darmawan" },
+    { name = "Nia Ambarsari" },
+]
+dependencies = [
+    "torch>=2.1",
+    "torchvision>=0.16",
+    "timm>=1.0.18",
+    "numpy",
+    "pillow",
+    "pyyaml",
+]
+
+[project.optional-dependencies]
+teachers = ["huggingface_hub", "safetensors", "transformers"]
+vis = ["matplotlib"]
+dev = ["pytest", "ruff"]
+
+[tool.setuptools.packages.find]
+include = ["unmask*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+
+[tool.ruff]
+line-length = 120
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "W"]
+ignore = ["E731"]
